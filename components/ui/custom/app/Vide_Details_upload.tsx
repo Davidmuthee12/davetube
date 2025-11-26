@@ -6,29 +6,42 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function VideoDetails() {
+interface VideoDetailsProps {
+  setTitle: (value: string) => void;
+  setAudience: (value: string) => void;
+  setTags: (value: string) => void;
+  setLanguage: (value: string) => void;
+  setCategory: (value: string) => void;
+}
+
+export default function VideoDetails({
+  setTitle,
+  setAudience,
+  setTags,
+  setLanguage,
+  setCategory,
+}: VideoDetailsProps) {
   return (
     <div className="flex flex-col w-full h-full items-center">
       <h1 className="text-xl font-semibold mb-6">VIDEO DETAILS</h1>
+
       <form className="flex flex-col h-full flex-1 w-full max-w-md gap-8 py-4">
+        {/* Title */}
         <div className="flex flex-col gap-2">
-          <label htmlFor="description" className="text-sm font-medium">
-            Description
-          </label>
+          <label className="text-sm font-medium">Video Title</label>
           <input
-            id="description"
             className="border-2 w-full px-3 py-2 rounded"
             type="text"
-            placeholder="Enter a descriptive video title"
+            placeholder="Enter video title"
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
 
+        {/* Audience */}
         <div className="flex flex-col gap-2">
-          <label htmlFor="audience" className="text-sm font-medium">
-            Audience
-          </label>
-          <Select>
-            <SelectTrigger className="w-full" id="audience">
+          <label className="text-sm font-medium">Audience</label>
+          <Select onValueChange={(value) => setAudience(value)}>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="All" />
             </SelectTrigger>
             <SelectContent>
@@ -40,24 +53,22 @@ export default function VideoDetails() {
           </Select>
         </div>
 
+        {/* Tags */}
         <div className="flex flex-col gap-2">
-          <label htmlFor="tags" className="text-sm font-medium">
-            Tags
-          </label>
+          <label className="text-sm font-medium">Tags</label>
           <input
-            id="tags"
+            className="border-2 w-full px-3 py-2 rounded"
             type="text"
             placeholder="Tag your video"
-            className="border-2 w-full px-3 py-2 rounded"
+            onChange={(e) => setTags(e.target.value)}
           />
         </div>
 
+        {/* Language */}
         <div className="flex flex-col gap-2">
-          <label htmlFor="language" className="text-sm font-medium">
-            Language
-          </label>
-          <Select>
-            <SelectTrigger className="w-full" id="language">
+          <label className="text-sm font-medium">Language</label>
+          <Select onValueChange={(value) => setLanguage(value)}>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="English" />
             </SelectTrigger>
             <SelectContent>
@@ -69,12 +80,11 @@ export default function VideoDetails() {
           </Select>
         </div>
 
+        {/* Category */}
         <div className="flex flex-col gap-2">
-          <label htmlFor="category" className="text-sm font-medium">
-            Category
-          </label>
-          <Select>
-            <SelectTrigger className="w-full" id="category">
+          <label className="text-sm font-medium">Category</label>
+          <Select onValueChange={(value) => setCategory(value)}>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Entertainment" />
             </SelectTrigger>
             <SelectContent>
