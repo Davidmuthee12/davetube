@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     }
 
     const client = await clientPromise;
-    const db = client.db(); // uses DB from connection string
+    const db = client.db(); 
     const users = db.collection("users");
 
     const existingUser = await users.findOne({ email });

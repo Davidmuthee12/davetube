@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { toast } from "sonner";
+
+
 export default function Page() {
   const [user, setUser] = useState({
     userName: "",
@@ -60,7 +62,7 @@ export default function Page() {
             <h1 className="text-3xl font-bold">Welcome to Davetube</h1>
             <h3 className="font-light">Sign Up </h3>
           </div>
-          <div className="flex p-5">
+          <div className="flex flex-col p-5">
             {(error || confirmError) && (
               <span className="text-red-500">{error || confirmError}</span>
             )}
