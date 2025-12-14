@@ -159,13 +159,13 @@ export default function Page() {
     formData.append("made_for_kids", isForKids ? "yes" : "no");
 
     // send to API
-    // const res = await fetch("/api/uploadVideo", {
-    //   method: "POST",
-    //   body: formData,
-    // });
+    const res = await fetch("/api/videos/upload", {
+      method: "POST",
+      body: formData,
+    });
 
-    // const result = await res.json();
-    // console.log("Upload finished:", result);
+    const result = await res.json();
+    console.log("Upload finished:", result);
 
     console.log("---- FormData entries ----");
     for (const pair of formData.entries()) {
